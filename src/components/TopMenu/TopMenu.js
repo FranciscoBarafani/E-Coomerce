@@ -4,13 +4,19 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import Cart from "../../components/Cart";
 import { ReactComponent as Logo } from "../../assets/img/logo-2.svg";
 
-export default function TopMenu() {
+export default function TopMenu(props) {
+  const { productsCart, getProductsCart, products } = props;
+
   return (
     <Navbar bg="dark" variant="dark" className="top-menu">
       <Container>
         <BrandNav />
         <MenuNav />
-        <Cart />
+        <Cart
+          productsCart={productsCart}
+          getProductsCart={getProductsCart}
+          products={products}
+        />
       </Container>
     </Navbar>
   );

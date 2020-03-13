@@ -25,17 +25,25 @@ function App() {
   };
 
   const addProductCart = (id, name) => {
+    console.log(id);
+    console.log(name);
     const idsProducts = productsCart;
+    console.log(productsCart);
     idsProducts.push(id);
     setProductsCart(idsProducts);
     localStorage.setItem(STORAGE_PRODUCTS_CART, productsCart);
+    getProductsCart();
     toast.success(`${name} añadido al carrito correctamente.`);
   };
 
   return (
     <div className="App">
       <div>
-        <TopMenu />
+        <TopMenu
+          productsCart={productsCart}
+          getProductsCart={getProductsCart}
+          products={products}
+        />
         <Products products={products} addProductCart={addProductCart} />
         <ToastContainer
           position="bottom-left"
